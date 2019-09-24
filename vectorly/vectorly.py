@@ -17,7 +17,30 @@ class VectorlyError(Exception):
 
 
 class Vectorly(object):
-
-    def __init__(self):
+    def __init__(self, api_key):
+        """
+        You can get your API key in the "Settings page"
+        :param api_key - your API key:
+        """
+        self.api_key = api_key
         pass
 
+    def upload(self, filename):
+        """
+        Upload videos to Vectorly
+        :param filename:
+        :return:
+        """
+        pass
+
+    def list(self):
+        pass
+
+    def search(self, search_term):
+        pass
+
+    def download(self, video_id, destination):
+        pass
+
+    def analytics(self, video_id=None):
+        pass
