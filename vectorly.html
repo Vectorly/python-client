@@ -1,0 +1,166 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module vectorly</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>vectorly</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/stv/project/vectorly/vectorly/vectorly.py">/home/stv/project/vectorly/vectorly/vectorly.py</a></font></td></tr></table>
+    <p><tt><a href="#Vectorly">Vectorly</a>&nbsp;Python&nbsp;Client<br>
+<a href="#Vectorly">Vectorly</a>'s&nbsp;Python&nbsp;library&nbsp;enables&nbsp;provides&nbsp;a&nbsp;Python&nbsp;wrapper&nbsp;for&nbsp;the&nbsp;API,&nbsp;enabling&nbsp;you&nbsp;to:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Upload&nbsp;videos&nbsp;in&nbsp;bulk<br>
+&nbsp;&nbsp;&nbsp;&nbsp;List&nbsp;current&nbsp;videos<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Search&nbsp;video<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Download&nbsp;video<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Retrieve&nbsp;analytics</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="vectorly.html#Vectorly">Vectorly</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="exceptions.html#Exception">exceptions.Exception</a>(<a href="exceptions.html#BaseException">exceptions.BaseException</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="vectorly.html#VectorlyError">VectorlyError</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Vectorly">class <strong>Vectorly</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>https://vectorly.io/docs/api/<br>
+The&nbsp;API&nbsp;lets&nbsp;you&nbsp;perform&nbsp;the&nbsp;following&nbsp;operations&nbsp;on&nbsp;your&nbsp;videos:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;upload<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;video_detail<br>
+&nbsp;&nbsp;&nbsp;&nbsp;search<br>
+&nbsp;&nbsp;&nbsp;&nbsp;download<br>
+&nbsp;&nbsp;&nbsp;&nbsp;analytics<br>
+&nbsp;&nbsp;&nbsp;&nbsp;events<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Vectorly-__init__"><strong>__init__</strong></a>(self, api_key, chunk_size<font color="#909090">=None</font>)</dt><dd><tt>You&nbsp;can&nbsp;get&nbsp;your&nbsp;API&nbsp;key&nbsp;in&nbsp;the&nbsp;"Settings&nbsp;page"<br>
+:param&nbsp;api_key:&nbsp;your&nbsp;API&nbsp;key<br>
+:param&nbsp;chunk_size:&nbsp;Chunk&nbsp;size</tt></dd></dl>
+
+<dl><dt><a name="Vectorly-analytics"><strong>analytics</strong></a>(self)</dt><dd><tt>Overall&nbsp;summary&nbsp;of&nbsp;video&nbsp;playback&nbsp;over&nbsp;the&nbsp;last&nbsp;30&nbsp;days<br>
+url&nbsp;=&nbsp;https://api.vectorly.io/analytics/summary<br>
+:return:</tt></dd></dl>
+
+<dl><dt><a name="Vectorly-download"><strong>download</strong></a>(self, video_id, destination)</dt><dd><tt>Download&nbsp;the&nbsp;compressed&nbsp;video&nbsp;to&nbsp;your&nbsp;system<br>
+url&nbsp;=&nbsp;https://api.vectorly.io/videos/download/&lt;video-id&gt;<br>
+:param&nbsp;video_id:&nbsp;Video&nbsp;ID<br>
+:param&nbsp;destination:&nbsp;Destination&nbsp;file<br>
+:return:</tt></dd></dl>
+
+<dl><dt><a name="Vectorly-events"><strong>events</strong></a>(self, video_id<font color="#909090">=None</font>)</dt><dd><tt>Retrieve&nbsp;all&nbsp;events&nbsp;from&nbsp;the&nbsp;last&nbsp;90&nbsp;days&nbsp;for&nbsp;a&nbsp;particular&nbsp;video<br>
+url&nbsp;=&nbsp;https://api.vectorly.io/analytics/events/video/[video-id]<br>
+:param&nbsp;video_id:&nbsp;Video&nbsp;ID<br>
+:return:</tt></dd></dl>
+
+<dl><dt><a name="Vectorly-list"><strong>list</strong></a>(self)</dt><dd><tt>Listing&nbsp;videos&nbsp;in&nbsp;<a href="#Vectorly">Vectorly</a><br>
+When&nbsp;videos&nbsp;have&nbsp;the&nbsp;status&nbsp;"ready",&nbsp;you&nbsp;can&nbsp;begin&nbsp;playing&nbsp;the&nbsp;video,&nbsp;or&nbsp;you&nbsp;can&nbsp;download&nbsp;it<br>
+url&nbsp;=&nbsp;https://api.vectorly.io/videos/list<br>
+:return:&nbsp;List&nbsp;of&nbsp;dictionary</tt></dd></dl>
+
+<dl><dt><a name="Vectorly-search"><strong>search</strong></a>(self, search_term)</dt><dd><tt>Searching&nbsp;videos<br>
+The&nbsp;search&nbsp;term&nbsp;is&nbsp;case&nbsp;insensitive.<br>
+url&nbsp;=&nbsp;https://api.vectorly.io/videos/search/&lt;search-term&gt;<br>
+:param&nbsp;search_term:&nbsp;Search&nbsp;term<br>
+:return:&nbsp;List&nbsp;of&nbsp;matches&nbsp;dictionary</tt></dd></dl>
+
+<dl><dt><a name="Vectorly-upload"><strong>upload</strong></a>(self, filename)</dt><dd><tt>Upload&nbsp;videos&nbsp;to&nbsp;<a href="#Vectorly">Vectorly</a><br>
+:param&nbsp;filename:&nbsp;File&nbsp;name<br>
+:return:</tt></dd></dl>
+
+<dl><dt><a name="Vectorly-video_detail"><strong>video_detail</strong></a>(self, video_id)</dt><dd><tt>Getting&nbsp;video&nbsp;details&nbsp;by&nbsp;video_id<br>
+url&nbsp;=&nbsp;https://api.vectorly.io/videos/get/[upload-id]<br>
+:param&nbsp;video_id:&nbsp;Video&nbsp;ID<br>
+:return:&nbsp;Dictionary&nbsp;{'id':&nbsp;str,&nbsp;'name':&nbsp;str,&nbsp;'status':&nbsp;str,&nbsp;'upload_id':&nbsp;str,&nbsp;'original_size':&nbsp;int,&nbsp;'private':&nbsp;Bool,&nbsp;'size':&nbsp;Int}}</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="VectorlyError">class <strong>VectorlyError</strong></a>(<a href="exceptions.html#Exception">exceptions.Exception</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="vectorly.html#VectorlyError">VectorlyError</a></dd>
+<dd><a href="exceptions.html#Exception">exceptions.Exception</a></dd>
+<dd><a href="exceptions.html#BaseException">exceptions.BaseException</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="VectorlyError-__init__"><strong>__init__</strong></a>(self, message, response<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="VectorlyError-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="exceptions.html#Exception">exceptions.Exception</a>:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object&gt;<dd><tt>T.<a href="#VectorlyError-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+<hr>
+Methods inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><a name="VectorlyError-__delattr__"><strong>__delattr__</strong></a>(...)</dt><dd><tt>x.<a href="#VectorlyError-__delattr__">__delattr__</a>('name')&nbsp;&lt;==&gt;&nbsp;del&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="VectorlyError-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#VectorlyError-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="VectorlyError-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#VectorlyError-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="VectorlyError-__getslice__"><strong>__getslice__</strong></a>(...)</dt><dd><tt>x.<a href="#VectorlyError-__getslice__">__getslice__</a>(i,&nbsp;j)&nbsp;&lt;==&gt;&nbsp;x[i:j]<br>
+&nbsp;<br>
+Use&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
+
+<dl><dt><a name="VectorlyError-__reduce__"><strong>__reduce__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="VectorlyError-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#VectorlyError-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
+
+<dl><dt><a name="VectorlyError-__setattr__"><strong>__setattr__</strong></a>(...)</dt><dd><tt>x.<a href="#VectorlyError-__setattr__">__setattr__</a>('name',&nbsp;value)&nbsp;&lt;==&gt;&nbsp;x.name&nbsp;=&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="VectorlyError-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="VectorlyError-__unicode__"><strong>__unicode__</strong></a>(...)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+<dl><dt><strong>message</strong></dt>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>

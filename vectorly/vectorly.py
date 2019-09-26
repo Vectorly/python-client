@@ -11,11 +11,11 @@ Vectorly's Python library enables provides a Python wrapper for the API, enablin
 """
 
 import requests
-from io import StringIO
 import tus
 
 
 class VectorlyError(Exception):
+
     def __init__(self, message, response=None):
         super().__init__(message)
         self.response = response
@@ -23,15 +23,24 @@ class VectorlyError(Exception):
 
     def __str__(self):
         if self.response is not None:
-            text = self.response.text
-            return f'VectorlyError({self.message}, response=({self.response.status_code}, {text.strip()}))'
+            return 'VectorlyError({message}, response={status_code}, {text})'.format(message=self.message,
+                                                                                   status_code=self.response.status_code,
+                                                                                   text=self.response.text.strip())
         else:
-            return f'VectorlyError({self.message})'
+            return 'VectorlyError({message})'.format(message=self.message)
 
 
 class Vectorly(object):
     """
     https://vectorly.io/docs/api/
+    The API lets you perform the following operations on your videos:
+        upload
+        list
+        video_detail
+        search
+        download
+        analytics
+        events
     """
     def __init__(self, api_key, chunk_size=None):
         """
@@ -59,7 +68,6 @@ class Vectorly(object):
         else:
             self.chunk_size = chunk_size
 
-
     def upload(self, filename):
         """
         Upload videos to Vectorly
@@ -79,15 +87,14 @@ class Vectorly(object):
         :return: List of dictionary
         """
         url = 'https://api.vectorly.io/videos/list'
-        r = None
         try:
             with requests.session() as s:
-                r = s.get(url, headers=self.headers)
-                js = r.json()
+                with s.get(url, headers=self.headers) as r:
+                    r.raise_for_status()
+                    js = r.json()
+                    return js
         except Exception as e:
             raise VectorlyError('Error list video files', r)
-        else:
-            return js
 
     def video_detail(self, video_id):
         """
@@ -96,15 +103,15 @@ class Vectorly(object):
         :param video_id: Video ID
         :return: Dictionary {'id': str, 'name': str, 'status': str, 'upload_id': str, 'original_size': int, 'private': Bool, 'size': Int}}
         """
-        url = f'https://api.vectorly.io/videos/get/{video_id}'
+        url = 'https://api.vectorly.io/videos/get/{video_id}'.format(video_id=video_id)
         try:
             with requests.session() as s:
-                r = s.get(url, headers=self.headers)
-                js = r.json()
+                with s.get(url, headers=self.headers) as r:
+                    r.raise_for_status()
+                    js = r.json()
+                    return js
         except Exception as e:
             raise VectorlyError('Error get video details', r)
-        else:
-            return js
 
     def search(self, search_term):
         """
@@ -115,25 +122,26 @@ class Vectorly(object):
         :return: List of matches dictionary
         """
 
-        url = f'https://api.vectorly.io/videos/search/{search_term}'
+        url = 'https://api.vectorly.io/videos/search/{search_term}'.format(search_term=search_term)
         try:
             with requests.session() as s:
-                r = s.get(url, headers=self.headers)
-                js = r.json()
+                with s.get(url, headers=self.headers) as r:
+                    r.raise_for_status()
+                    js = r.json()
+                    return js
         except Exception as e:
             raise VectorlyError('Error search term', r)
-        else:
-            return js
 
     def download(self, video_id, destination):
         """
+        Download the compressed video to your system
         url = https://api.vectorly.io/videos/download/<video-id>
         :param video_id: Video ID
         :param destination: Destination file
         :return:
         """
 
-        url = f'https://api.vectorly.io/videos/download/{video_id}'
+        url = 'https://api.vectorly.io/videos/download/{video_id}'.format(video_id=video_id)
         try:
             with requests.session() as s:
                 with s.get(url, headers=self.headers, stream=True) as r:
@@ -148,10 +156,18 @@ class Vectorly(object):
         """
         Overall summary of video playback over the last 30 days
         url = https://api.vectorly.io/analytics/summary
-        :param video_id: Video ID
         :return:
         """
-        pass
+
+        url = 'https://api.vectorly.io/analytics/summary/'
+        try:
+            with requests.session() as s:
+                with s.get(url, headers=self.headers) as r:
+                    r.raise_for_status()
+                    js = r.json()
+                    return js
+        except Exception as e:
+            raise VectorlyError('Error get analytics', r)
 
     def events(self, video_id=None):
         """
@@ -160,3 +176,15 @@ class Vectorly(object):
         :param video_id: Video ID
         :return:
         """
+        if video_id is not None:
+            url = 'https://api.vectorly.io/analytics/events/video/{video_id}'.format(video_id=video_id)
+        else:
+            url = 'https://api.vectorly.io/analytics/events/video/'
+        try:
+            with requests.session() as s:
+                with s.get(url, headers=self.headers) as r:
+                    r.raise_for_status()
+                    js = r.json()
+                    return js
+        except Exception as e:
+            raise VectorlyError('Error get events', r)
