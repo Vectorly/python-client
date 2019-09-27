@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Vectorly
 
 Vectorly's Python library enables provides a Python wrapper for the [Vectorly API](https://vectorly.io/docs/api/),
