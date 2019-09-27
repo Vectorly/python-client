@@ -34,8 +34,8 @@ class Vectorly(object):
     """
     https://vectorly.io/docs/api/
     The API lets you perform the following operations on your videos:
-        upload
-        list
+        - upload
+        - list
         video_detail
         search
         download
@@ -44,6 +44,8 @@ class Vectorly(object):
     """
     def __init__(self, api_key, chunk_size=None):
         """
+        Getting your API key
+        To use the library, you will need an API Key.
         You can get your API key in the "Settings page"
         :param api_key: your API key
         :param chunk_size: Chunk size
