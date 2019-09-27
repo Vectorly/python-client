@@ -111,9 +111,3 @@ vectorly_obj.events(video_id)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
-=======
-# vectorly
-Python library for uploading, compressing and streaming videos using Vectorly's stream product
-
-
->>>>>>> 664e0e291bcd04eacfb6a24b9442e63045116478
