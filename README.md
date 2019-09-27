@@ -62,7 +62,7 @@ vectorly.upload(filename)
 ```
 >API_KEI - your API key  
 >chank_size - chank size, default 256000  
->filename - Upload file name
+>filename - Uploaded file name
 
 ### list
 Listing videos in Vectorly.
